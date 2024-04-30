@@ -3,11 +3,16 @@ from sqlalchemy import create_engine
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import scoped_session, sessionmaker
 import os
+from dotenv import load_dotenv
+
+# Ensure environment variables are loaded
+load_dotenv()
 
 # Creating a SQLAlchemy db object without direct initialization
 db = SQLAlchemy()
 
 DATABASE_URI = os.getenv('DB_URI')
+print("Database URI:", DATABASE_URI)
 engine = create_engine(DATABASE_URI)
 Session = scoped_session(sessionmaker(bind=engine))
 
