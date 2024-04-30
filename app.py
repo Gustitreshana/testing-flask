@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 from dotenv import load_dotenv
 from flask_jwt_extended import JWTManager
 from utils.db import init_db
@@ -30,7 +30,7 @@ def create_app():
     # Defining routes here
     @app.route('/')
     def home():
-        return "Hello, Zero Hunger API!"
+        return jsonify({"message": "Hello, Zero Hunger API!"}), 200
 
     return app
 
